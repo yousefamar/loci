@@ -1,4 +1,5 @@
 'use client';
+
 import * as THREE from 'three'
 import React, { useRef, useState } from 'react'
 import { useFrame, ThreeElements } from '@react-three/fiber'
@@ -7,7 +8,7 @@ export default function Box(props: ThreeElements['mesh']) {
   const meshRef = useRef<THREE.Mesh>(null!)
   const [hovered, setHover] = useState(false)
   const [active, setActive] = useState(false)
-  useFrame((state, delta) => (meshRef.current.rotation.x += delta))
+  // useFrame((state, delta) => (meshRef.current.rotation.x += delta))
   return (
     <mesh
       {...props}
@@ -16,7 +17,7 @@ export default function Box(props: ThreeElements['mesh']) {
       onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
-      <boxGeometry args={[1, 1, 1]} />
+      <boxGeometry args={[10, 10, 10]} />
       <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
     </mesh>
   )
